@@ -1,70 +1,21 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: May 18, 2021 at 05:45 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+DROP DATABASE IF EXISTS `webhotel`;
+CREATE DATABASE IF NOT EXISTS `webhotel`;
+USE `webhotel`;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+DROP TABLE IF EXISTS `members`;
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) NOT NULL DEFAULT '0',
+  `last_name` varchar(255) NOT NULL DEFAULT '0',
+  `email` varchar(255) NOT NULL DEFAULT '0',
+  `password` varchar(255) NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `webhotels`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `vkey` varchar(250) NOT NULL,
-  `varified` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `vkey`, `varified`) VALUES
-(6, '', '', '$2y$10$U.P8H2LZFAMhQ7nyZtKY2u336CP2dc0CJVnorwEi983bQ/c9FbeXm', '', 0),
-(7, '11', '11', '$2y$10$xvuetzKQ6hHUoBjbFDr.nO5hddrn6VnBMA7d//mn8QZTA0vgBQ27y', '', 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `members` (`id`, `first_name`, `last_name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+	(2, 'chris', 'zervas', 'chriszervas@gmail.com', '$2y$04$t7Mp2Lxwxh3xpjkbI49pCu4269Wz8rhvDtFbbJJQ4.6V5SmUSYjeS', '2021-02-05 16:45:33', '2021-02-05 16:45:33'),
+	(3, 'thanos', 'papadakis', 'thanospapadakis@gmail.com', '$2y$04$MiPuZJMuwzwEKxjqkMtF3O8ysIgeGx/ldo5CZMR/fqAn8zmNUo4U2', '2021-02-05 16:46:09', '2021-02-05 16:46:09'),
+	(5, 'takhs', 'pipas', 'takispipas@gmail.com', '$2y$04$AINjWMW4HWKPPErbSrQxyOyyfh8QkQSH3S4sEBE8nA5Qh0.cIS0Am', '2021-02-05 16:49:27', '2021-02-05 16:49:27'),
+	(6, 'mpamphs', 'tentas', 'mpamphstentas@gmail.com', '$2y$04$eHVKFNfLy6vtZg0HIt/dv.idTuLhkBGmLl.oK3lLxI6fKWb22TIYi', '2021-02-05 17:23:21', '2021-02-05 17:23:21');
