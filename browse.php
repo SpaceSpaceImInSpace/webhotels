@@ -11,16 +11,58 @@
 <body>
 
     <div class="header">
-    <div class="logo"> <a href="index.php"> <img src="images/Logo.png" alt="Logo"> </a> </div>
-        <div class="nav">
-            <a href="browse.php" > BROWSE </a>
-            <a href="login.php" > LOGIN </a>
-            <a href="signup.php" > REGISTER </a>
+        <div class="logo">
+            <a href="index.php"> <img src="images/Logo.png" alt="Logo"> </a>
         </div>
+            <div class="nav">
+                <a href="browse.php" > BROWSE </a>
+                <a href="login.php" > LOGIN </a>
+                <a href="signup.php" > REGISTER </a>
+            </div>
     </div>
+    <?php
 
-    <h1>WELCOME</h1>
-    <a href="logout.php?logout=true">Logout</a>
+        $host = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "webhotel";
+
+    try {
+        $connect = new PDO("mysql:host=$host;dbname=$database",$username,$password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // echo 'Database Connection Done';
+
+        $query = "SELECT * FROM hotels";
+
+        $data = $connect->query($query);
+
+        // echo ' <div class="hotels">
+        //             <div>hotel_name</div>
+        //             <div>county</div>
+        //             <div>address</div>
+        //             <div>phone</div>
+        //             <div>pic</div>
+        //         </div> ';
+
+        foreach ($data as $row)
+        {
+            echo '<div class="hotels">
+                        <div>'.$row["hotel_name"].'</div>
+                        <div>'.$row["county"].'</div>
+                        <div>'.$row["address"].'</div>
+                        <div>'.$row["phone"].'</div>
+                        <div>'.$row["pic"].'</div>
+                    </div>';
+        }
+
+    }
+    catch (PDOException $error)
+    {
+        $error ->getMessage();
+    }
+     ?>
+    <!-- <h1>WELCOME</h1>
+    <a href="logout.php?logout=true">Logout</a> -->
 
     <button id="dark-mode-toggle"class="dark-mode-toggle">
         <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
